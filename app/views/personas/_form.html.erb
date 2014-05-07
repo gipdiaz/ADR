@@ -147,55 +147,84 @@
 
   <hr/> 
 
-  <div class="field">
-    <b class="text-error">Establecimientos:</b><br /><br />
-    <%= f.text_field :establecimiento_tokens, "data-pre" => @persona.establecimientos.map(&:attributes).to_json %>
+  <div class="row">
+    <div class="span6">
+      <div class="control-group success">
+        <label class="control-label"><strong>Está interesado en ingresar a planta como auxiliar de la educación?</strong></label>
+        <div class="controls">
+          <%= f.check_box :ingresar_planta %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span12">        
+        <div class="controls">
+          <h4>Escuelas en las que trabaja:</h4>
+          <%= f.text_field :establecimiento_tokens, "data-pre" => @persona.establecimientos.map(&:attributes).to_json %>
+        </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span6">
+      <div class="control-group success">
+        <label class="control-label"><strong>Cantidad de contratos que posee:</strong></label>
+        <div class="controls">
+          <%= f.select :cant_contratos, (0..5) %>
+        </div>
+      </div>
+    </div>
+    <div class="span6">
+      <div class="control-group success">
+        <label class="control-label"><strong>Cantidad de horas cátedra que posee:</strong></label>
+        <div class="controls">
+          <%= f.select :cant_horas, (0..45) %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span6">
+      <div class="control-group success">
+        <label class="control-label"><strong>Cantidad de cargos docentes que posee:</strong></label>
+        <div class="controls">
+          <%= f.select :cant_cargos_docente, (0..5) %>
+        </div>
+      </div>
+    </div>
+    <div class="span6">
+      <div class="control-group success">
+        <label class="control-label"><strong>Cantidad de cargos auxiliares que posee:</strong></label>
+        <div class="controls">
+          <%= f.select :cant_cargos_aux, (0..5) %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span6">
+      <div class="control-group success">
+        <label class="control-label"><strong>Posee otro tipo de contratación?</strong></label>
+        <div class="controls">
+          <%= f.check_box :otra_contratacion %>
+        </div>
+      </div>
+    </div>
+    <div class="span6">
+      <div class="control-group success">
+        <label class="control-label"><strong>Cual?</strong></label>
+        <div class="controls">
+          <%= f.text_field :cual_contratacion, :style => "width:100%;" %>
+        </div>
+      </div>
+    </div>
   </div>
 
 
-
-  <div class="control-group">
-    <%= f.label "Está interesado en ingresar a planta como auxiliar de la educación?", :class => 'control-label' %>
-    <div class="controls">
-      <%= f.check_box :ingresar_planta %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :cant_contratos, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.select :cant_contratos, (0..5) %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :cant_horas, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.select :cant_horas, (0..45) %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :cant_cargos_docente, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.select :cant_cargos_docente, (0..5) %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :cant_cargos_aux, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.select :cant_cargos_aux, (0..5) %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :otra_contratacion, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.check_box :otra_contratacion %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :cual_contratacion, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :cual_contratacion, :class => 'text_field' %>
-    </div>
-  </div>
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
