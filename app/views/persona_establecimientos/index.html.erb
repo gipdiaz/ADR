@@ -1,0 +1,25 @@
+<h1>Listing persona_establecimientos</h1>
+
+<table>
+  <tr>
+    <th>Persona</th>
+    <th>Establecimiento</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @persona_establecimientos.each do |persona_establecimiento| %>
+  <tr>
+    <td><%= persona_establecimiento.persona_id %></td>
+    <td><%= persona_establecimiento.establecimiento_id %></td>
+    <td><%= link_to 'Show', persona_establecimiento %></td>
+    <td><%= link_to 'Edit', edit_persona_establecimiento_path(persona_establecimiento) %></td>
+    <td><%= link_to 'Destroy', persona_establecimiento, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Persona establecimiento', new_persona_establecimiento_path %>

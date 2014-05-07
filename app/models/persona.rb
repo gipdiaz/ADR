@@ -21,6 +21,7 @@ class Persona < ActiveRecord::Base
   has_many :establecimientos, :through => :persona_establecimiento
   attr_reader :establecimiento_tokens
 
+
   def establecimiento_tokens=(ids)
     self.establecimiento_ids = ids.split(",")
   end
