@@ -2,7 +2,11 @@ class EstablecimientosController < ApplicationController
   # GET /establecimientos
   # GET /establecimientos.json
   def index
-    @establecimientos = Establecimiento.all
+    if params[:q] then 
+      @establecimientos = Establecimiento.where("codigo_jurisdiccional like ?", "%#{params[:q]}%").paginate(:page => params[:page], :per_page => 20)
+    else
+      @establecimientos = Establecimiento.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
