@@ -3,6 +3,9 @@ class Establecimiento < ActiveRecord::Base
 
   belongs_to :localidad
 
+  has_many :persona_establecimientos
+  has_many :personas, :through => :persona_establecimientos
+
   def to_s
   	"#{ self.nombre }"
   end

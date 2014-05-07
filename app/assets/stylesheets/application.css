@@ -8,4 +8,5 @@
  *= require dataTables/jquery.dataTables.bootstrap
  *= require jquery-ui-timepicker-addon
  *= require jquery-ui/ui-lightness
+ *= require token-input-facebook
 */

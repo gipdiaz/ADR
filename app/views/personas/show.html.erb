@@ -32,8 +32,20 @@
   <dd><%= @persona.email %></dd>
   <dt><strong><%= model_class.human_attribute_name(:localidad_id) %>:</strong></dt>
   <dd><%= @persona.localidad %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:situacion_revista_id) %>:</strong></dt>
-  <dd><%= SituacionRevistum.find(@persona.situacion_revista_id) %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:ingresar_planta) %>:</strong></dt>
+  <dd><%= @persona.ingresar_planta %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:cant_contratos) %>:</strong></dt>
+  <dd><%= @persona.cant_contratos %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:cant_horas) %>:</strong></dt>
+  <dd><%= @persona.cant_horas %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:cant_cargos_docente) %>:</strong></dt>
+  <dd><%= @persona.cant_cargos_docente %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:cant_cargos_aux) %>:</strong></dt>
+  <dd><%= @persona.cant_cargos_aux %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:otra_contratacion) %>:</strong></dt>
+  <dd><%= @persona.otra_contratacion %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:cual_contratacion) %>:</strong></dt>
+  <dd><%= @persona.cual_contratacion %></dd>
 </dl>
 
 <div class="form-actions">

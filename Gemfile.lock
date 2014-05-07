@@ -113,6 +113,8 @@ GEM
       railties (= 3.2.8)
     rails3-jquery-autocomplete (1.0.10)
       rails (~> 3.0)
+    rails_tokeninput (1.6.0)
+      railties (>= 3.1.0)
     railties (3.2.8)
       actionpack (= 3.2.8)
       activesupport (= 3.2.8)
@@ -172,6 +174,7 @@ DEPENDENCIES
   nested_form
   rails (= 3.2.8)
   rails3-jquery-autocomplete
+  rails_tokeninput
   railties
   sass-rails (~> 3.2.3)
   sqlite3

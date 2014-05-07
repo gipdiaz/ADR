@@ -12,3 +12,20 @@
 //= require dataTables/jquery.dataTables.bootstrap
 //= require jquery-ui
 //= require jquery-ui-timepicker-addon.js
+//= require jquery.tokeninput
+
+$(document).ready(
+  function() {
+  $("#persona_establecimiento_tokens").tokenInput("/establecimientos.json", {
+		crossDomain: false,
+		searchingText: "Buscando...",
+		hintText: "Escriba para buscar establecimientos",
+		tokenLimit: 20,
+    	minChars: 1,
+		noResultsText: "No se han encontrado resultados",
+		prePopulate: $("#persona_establecimiento_tokens").data("pre"),
+		theme: "facebook"
+		
+	});
+   
+});

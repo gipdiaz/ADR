@@ -1,92 +1,199 @@
 <%= form_for @persona, :html => { :class => 'form-horizontal' } do |f| %>
+
+  <% if @persona.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@persona.errors.count, "error") %> prohibited this persona from being saved:</h2>
+
+      <ul>
+      <% @persona.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="span6">
+      <div class="control-group success">
+        <label class="control-label"><strong>Nombres:</strong></label>
+        <div class="controls">
+          <%= f.text_field :nombres, :style => "width:100%;" %>
+        </div>
+      </div>
+    </div>
+    <div class="span6">
+      <div class="control-group success">
+        <label class="control-label"><strong>Apellidos:</strong></label>
+        <div class="controls">
+          <%= f.text_field :apellidos, :style => "width:100%;" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span6">
+      <div class="control-group success">
+        <label class="control-label"><strong>Tipo de documento:</strong></label>
+        <div class="controls">
+          <%= f.collection_select(:tipo_documento_id, TipoDocumento.all, :id, :nombre) %>
+        </div>
+      </div>
+    </div>
+    <div class="span6">
+      <div class="control-group success">
+        <label class="control-label"><strong>Número de documento:</strong></label>
+        <div class="controls">
+          <%= f.text_field :nro_documento, :style => "width:100%;" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span6">
+      <div class="control-group success">
+        <label class="control-label"><strong>Calle:</strong></label>
+        <div class="controls">
+          <%= f.text_field :calle, :style => "width:100%;" %>
+        </div>
+      </div>
+    </div>
+    <div class="span6">
+      <div class="control-group success">
+        <label class="control-label"><strong>Nro. calle:</strong></label>
+        <div class="controls">
+          <%= f.text_field :nro_calle, :style => "width:100%;" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">    
+    <div class="span6">
+      <div class="control-group success">
+        <label class="control-label"><strong>Depto:</strong></label>
+        <div class="controls">
+          <%= f.text_field :depto, :style => "width:100%;" %>
+        </div>
+      </div>
+    </div>
+    <div class="span6">
+      <div class="control-group success">
+        <label class="control-label"><strong>Piso:</strong></label>
+        <div class="controls">
+          <%= f.text_field :piso, :style => "width:100%;" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span6">
+      <div class="control-group success">
+        <label class="control-label"><strong>Estado civil:</strong></label>
+        <div class="controls">
+          <%= f.collection_select(:estado_civil_id, EstadoCivil.all, :id, :nombre) %>
+        </div>
+      </div>
+    </div>
+    <div class="span6">
+      <div class="control-group success">
+        <label class="control-label"><strong>Sexo:</strong></label>
+        <div class="controls">
+          <%= f.collection_select(:sexo_id, Sexo.all, :id, :nombre) %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span6">
+      <div class="control-group success">
+        <label class="control-label"><strong>Fecha de nacimiento:</strong></label>
+        <div class="controls">
+          <%= f.datepicker :fecha_nacimiento, :id => "datepicker" %>
+        </div>
+      </div>
+    </div>
+    <div class="span6">
+      <div class="control-group success">
+        <label class="control-label"><strong>Localidad:</strong></label>
+        <div class="controls">
+          <%= f.collection_select(:localidad_id, Localidad.all, :id, :nombre) %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span6">
+      <div class="control-group success">
+        <label class="control-label"><strong>Teléfono de contacto:</strong></label>
+        <div class="controls">
+          <%= f.text_field :telefono_contacto, :style => "width:100%;" %>
+        </div>
+      </div>
+    </div>
+    <div class="span6">
+      <div class="control-group success">
+        <label class="control-label"><strong>Correo electrónico:</strong></label>
+        <div class="controls">
+          <%= f.text_field :email, :style => "width:100%;" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr/> 
+
+  <div class="field">
+    <b class="text-error">Establecimientos:</b><br /><br />
+    <%= f.text_field :establecimiento_tokens, "data-pre" => @persona.establecimientos.map(&:attributes).to_json %>
+  </div>
+
+
+
   <div class="control-group">
-    <%= f.label :nombres, :class => 'control-label' %>
+    <%= f.label "Está interesado en ingresar a planta como auxiliar de la educación?", :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :nombres, :class => 'text_field' %>
+      <%= f.check_box :ingresar_planta %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :apellidos, :class => 'control-label' %>
+    <%= f.label :cant_contratos, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :apellidos, :class => 'text_field' %>
+      <%= f.select :cant_contratos, (0..5) %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :tipo_documento_id, :class => 'control-label' %>
+    <%= f.label :cant_horas, :class => 'control-label' %>
     <div class="controls">
-      <%= f.collection_select(:tipo_documento_id, TipoDocumento.all, :id, :nombre) %>
+      <%= f.select :cant_horas, (0..45) %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label "Número de Documento", :class => 'control-label'  %>
+    <%= f.label :cant_cargos_docente, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :nro_documento, :class => 'text_field' %>
+      <%= f.select :cant_cargos_docente, (0..5) %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :calle, :class => 'control-label' %>
+    <%= f.label :cant_cargos_aux, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :calle, :class => 'text_field' %>
+      <%= f.select :cant_cargos_aux, (0..5) %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label "Número de Calle", :class => 'control-label' %>
+    <%= f.label :otra_contratacion, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :nro_calle, :class => 'text_field' %>
+      <%= f.check_box :otra_contratacion %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :piso, :class => 'control-label' %>
+    <%= f.label :cual_contratacion, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :piso, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :depto, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :depto, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :estado_civil_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.collection_select(:estado_civil_id, EstadoCivil.all, :id, :nombre) %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :sexo_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.collection_select(:sexo_id, Sexo.all, :id, :nombre) %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :fecha_nacimiento, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.datepicker :fecha_nacimiento, :id => "datepicker" %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :telefono_contacto, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :telefono_contacto, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :email, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :email, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :localidad_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.collection_select(:localidad_id, Localidad.all, :id, :nombre) %>
-    </div>
-  </div>
-   <div class="control-group">
-    <%= f.label :situacion_revista_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.collection_select(:situacion_revista_id, SituacionRevistum.all, :id, :nombre) %>
+      <%= f.text_field :cual_contratacion, :class => 'text_field' %>
     </div>
   </div>
 
