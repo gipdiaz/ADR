@@ -13,10 +13,9 @@
   <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 </head>
 <body style="padding:40px">
-<div class="container">
 <div id="navbar-example" class="navbar navbar-fixed-top">
   <div class="navbar-inner">
-    <div class="container" style="width: auto;">
+    <div class="container">
       <a class="brand" href="<%= url_for root_path %>">&nbsp;&nbsp;&nbsp;Censo ADR</a>
       <ul class="nav" role="navigation">
        	
@@ -60,7 +59,7 @@
 	            <li><%= link_to 'Salir', destroy_user_session_path, :method => :delete, :tabindex => "-1" %></li>            
 	          </ul>
 	      <% else %>
-	          <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">No ha iniciado sesion<b class="caret"></b></a>
+	          <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">No ha iniciado sesion <b class="caret"></b></a>
 	          <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
 	          	<li><%= link_to "Iniciar Sesion", new_user_session_path , :tabindex => "-1" %></li> 
 	          	<li class="divider"></li>
@@ -85,11 +84,16 @@
       </ul>      
     </div>
   </div>
-</div> 									
+</div>
+<div class="container">
+ 									
 
 <div class="row"> 
 	<div class="span12">
-		<div class="container">
+		
+
+		<br/><p align="center"><%=link_to image_tag("logo.png")%></p><br/>
+
 		   <% if flash[:error] then %>
 		   	<div class="alert alert-error">
 				<button type="button" class="close" data-dismiss="alert">×</button>
@@ -111,7 +115,7 @@
     	   <% end %>
     	   <%= yield :menu %>
 		   <%= yield %>
-		</div>
+		
 	</div>
 </div>
 </div>
