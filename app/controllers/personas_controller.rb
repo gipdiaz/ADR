@@ -1,4 +1,6 @@
 class PersonasController < ApplicationController
+  before_filter :authenticate_user!, :except => [:show, :new, :create]
+  load_and_authorize_resource
   # GET /personas
   # GET /personas.json
   def index

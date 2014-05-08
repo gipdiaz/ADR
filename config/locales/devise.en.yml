@@ -53,3 +53,10 @@ en:
         subject: 'Instrucciones de cambio de contraseña'
       unlock_instructions:
         subject: 'Instrucciones de desbloqueo'
+
+  unauthorized:
+    manage:
+      all: "Usted no está autorizado para acceder a esta página."
+      user: "Usted no está autorizado para acceder a esta página."
+    update:
+      project: "Usted no está autorizado para acceder a esta página."

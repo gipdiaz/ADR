@@ -15,5 +15,7 @@ class Ability
 	    end    
     end    
     can :create, [Persona]
+    can :read, [Persona]
+    can :read, [Establecimiento]
   end
 end

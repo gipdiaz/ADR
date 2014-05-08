@@ -1,5 +1,3 @@
-<% if can? :manage, Persona %>
-
 <%- model_class = Persona -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human %></h1>
@@ -27,46 +25,60 @@
   <dt><strong><%= model_class.human_attribute_name(:sexo_id) %>:</strong></dt>
   <dd><%= @persona.sexo %></dd>
   <dt><strong><%= model_class.human_attribute_name(:fecha_nacimiento) %>:</strong></dt>
-  <dd><%= @persona.fecha_nacimiento %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:telefono_contacto) %>:</strong></dt>
+  <dd><%= Util.fecha_a_cadena(@persona.fecha_nacimiento) %></dd>
+  <dt><strong>Teléfono de contacto:</strong></dt>
   <dd><%= @persona.telefono_contacto %></dd>
   <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
   <dd><%= @persona.email %></dd>
   <dt><strong><%= model_class.human_attribute_name(:localidad_id) %>:</strong></dt>
   <dd><%= @persona.localidad %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:ingresar_planta) %>:</strong></dt>
-  <dd><%= @persona.ingresar_planta %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:cant_contratos) %>:</strong></dt>
+  <dt><strong>Ingresar a planta:</strong></dt>
+    <dd>
+      <% if @persona.ingresar_planta == true then %>
+        Si desea
+      <% else %>
+        No desea
+      <% end %> 
+    </dd>
+  <dt><strong>Cant. contratos:</strong></dt>
   <dd><%= @persona.cant_contratos %></dd>
   <dt><strong><%= model_class.human_attribute_name(:cant_horas) %>:</strong></dt>
   <dd><%= @persona.cant_horas %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:cant_cargos_docente) %>:</strong></dt>
+  <dt><strong>Cant. cargos docentes:</strong></dt>
   <dd><%= @persona.cant_cargos_docente %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:cant_cargos_aux) %>:</strong></dt>
+  <dt><strong>Cant. cargos auxiliares:</strong></dt>
   <dd><%= @persona.cant_cargos_aux %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:otra_contratacion) %>:</strong></dt>
-  <dd><%= @persona.otra_contratacion %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:cual_contratacion) %>:</strong></dt>
+  <dt><strong>Otra contratación:</strong></dt>
+  <dd>
+      <% if @persona.otra_contratacion == true then %>
+        Si posee
+      <% else %>
+        No posee
+      <% end %> 
+    </dd>
+  <dt><strong>Cuál contratación?</strong></dt>
   <dd><%= @persona.cual_contratacion %></dd>
 </dl>
 
-<div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              personas_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_persona_path(@persona), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              persona_path(@persona),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
-</div>
+<% if can? :manage, Persona %>
+
+  <div class="form-actions">
+    <%= link_to t('.back', :default => t("helpers.links.back")),
+                personas_path, :class => 'btn'  %>
+    <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                edit_persona_path(@persona), :class => 'btn' %>
+    <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                persona_path(@persona),
+                :method => 'delete',
+                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                :class => 'btn btn-danger' %>
+  </div>
 
 <% else %>
-    
-   <%= flash[:error] = "Usted no está autorizado para ingresar a esta página" %>
-   <script type="text/javascript">
-     window.location.href="/personas/new"
-   </script>
-    
+
+  <div class="form-actions">
+    <button onclick="location.href='http://chubut.edu.ar'" class="btn btn-success">Finalizar</button>
+    <%= link_to 'Cargar otro', new_persona_path, :class => "btn btn-primary" %>
+  </div>
+
 <% end %>

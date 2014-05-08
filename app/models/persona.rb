@@ -14,6 +14,8 @@ class Persona < ActiveRecord::Base
   validates :nro_documento, :presence => true, uniqueness: true, :numericality => { :greater_than_or_equal_to => 1000000 }
   validates_numericality_of :nro_documento, :only_integer => true
 
+  validates_numericality_of :nro_calle, :only_integer => true
+
   attr_accessible :persona_establecimientos_attributes
   attr_accessible :persona_attributes
 

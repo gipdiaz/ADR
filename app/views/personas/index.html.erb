@@ -1,4 +1,3 @@
-<% if can? :manage, Persona %>
 
 <%- model_class = Persona -%>
 <div class="page-header">
@@ -78,13 +77,3 @@
             });
     });
 </script>
-
-
-<% else %>
-    
-   <%= flash[:error] = "Usted no está autorizado para ingresar a esta página" %>
-   <script type="text/javascript">
-     window.location.href="/personas/new"
-   </script>
-    
-<% end %>

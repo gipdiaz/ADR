@@ -1,11 +1,9 @@
-<% if can? :create, Persona %>
 
 <%= form_for @persona, :html => { :class => 'form-horizontal' } do |f| %>
 
   <% if @persona.errors.any? %>
     <div id="error_explanation">
       <h2>No se pudo guardar, tiene los siguientes errores:</h2>
-
       <ul>
       <% @persona.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -153,8 +151,8 @@
   <legend>Escuelas en las que trabaja</legend>
 
   <div class="row">
-    <div class="span12" style="margin:10px 0px 10px 210px;">
-    <%= f.text_field :establecimiento_tokens, "data-pre" => @persona.establecimientos.map(&:attributes).to_json, :placeholder => "buenas" %>
+    <div class="span12" style="margin:10px 0px 10px 210px;">    
+      <%= f.text_field :establecimiento_tokens, "data-pre" => @persona.establecimientos.map(&:attributes).to_json %>    
     </div>
   </div>
 
@@ -234,9 +232,7 @@
 
 
   <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary', :value => "Guardar" %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                personas_path, :class => 'btn' %>
+    <%= f.submit nil, :class => 'btn btn-primary', :value => "Guardar", data: { confirm: '¿Confirma sus datos personales?' } %>    
   </div>
 <% end %>
 
@@ -255,12 +251,3 @@
         });
 
 </script>
-
-<% else %>
-    
-   <%= flash[:error] = "Usted no está autorizado para ingresar a esta página" %>
-   <script type="text/javascript">
-     window.location.href="/personas/new"
-   </script>
-    
-<% end %>
