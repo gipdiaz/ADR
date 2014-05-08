@@ -2,7 +2,7 @@
 
   <% if @persona.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@persona.errors.count, "error") %> prohibited this persona from being saved:</h2>
+      <h2>No se pudo guardar, tiene los siguientes errores:</h2>
 
       <ul>
       <% @persona.errors.full_messages.each do |msg| %>
@@ -145,7 +145,23 @@
     </div>
   </div>
 
-  <hr/> 
+  <hr/>   
+
+ 
+
+
+  <div class="row">
+    <div class="span6">
+      <div class="control-group success">
+        <label class="control-label"><strong>Escuelas en las que trabaja:</strong></label>
+        <div class="controls">
+          <%= f.text_field :establecimiento_tokens, "data-pre" => @persona.establecimientos.map(&:attributes).to_json, :class => "success" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr/>
 
   <div class="row">
     <div class="span6">
@@ -155,15 +171,6 @@
           <%= f.check_box :ingresar_planta %>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="span12">        
-        <div class="controls">
-          <h4>Escuelas en las que trabaja:</h4>
-          <%= f.text_field :establecimiento_tokens, "data-pre" => @persona.establecimientos.map(&:attributes).to_json %>
-        </div>
     </div>
   </div>
 

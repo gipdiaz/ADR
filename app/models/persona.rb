@@ -11,7 +11,7 @@ class Persona < ActiveRecord::Base
 
   validates :nombres, :presence => true
   validates :apellidos, :presence => true
-  validates :nro_documento, :presence => true
+  validates :nro_documento, :presence => true, uniqueness: true
 
   attr_accessible :persona_establecimientos_attributes
   attr_accessible :persona_attributes
