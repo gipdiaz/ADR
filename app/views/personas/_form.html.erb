@@ -13,13 +13,14 @@
       </ul>
     </div>
   <% end %>
-
+  
+  <legend>Datos Personales</legend>
   <div class="row">
     <div class="span6">
       <div class="control-group success">
         <label class="control-label"><strong>Nombres:</strong></label>
         <div class="controls">
-          <%= f.text_field :nombres, :style => "width:100%;" %>
+          <%= f.text_field :nombres, :style => "width:100%;", :placeholder => "Ingrese sus nombres" %>
         </div>
       </div>
     </div>
@@ -27,7 +28,7 @@
       <div class="control-group success">
         <label class="control-label"><strong>Apellidos:</strong></label>
         <div class="controls">
-          <%= f.text_field :apellidos, :style => "width:100%;" %>
+          <%= f.text_field :apellidos, :style => "width:100%;", :placeholder => "Ingrese sus apellidos" %>
         </div>
       </div>
     </div>
@@ -44,9 +45,9 @@
     </div>
     <div class="span6">
       <div class="control-group success">
-        <label class="control-label"><strong>Número de documento:</strong></label>
+        <label class="control-label"><strong>Nro de documento:</strong></label>
         <div class="controls">
-          <%= f.text_field :nro_documento, :style => "width:100%;" %>
+          <%= f.text_field :nro_documento, :style => "width:100%;", :placeholder => "Ingrese su número de documento" %>
         </div>
       </div>
     </div>
@@ -57,7 +58,7 @@
       <div class="control-group success">
         <label class="control-label"><strong>Calle:</strong></label>
         <div class="controls">
-          <%= f.text_field :calle, :style => "width:100%;" %>
+          <%= f.text_field :calle, :style => "width:100%;", :placeholder => "Ingrese su dirección" %>
         </div>
       </div>
     </div>
@@ -133,7 +134,7 @@
       <div class="control-group success">
         <label class="control-label"><strong>Teléfono de contacto:</strong></label>
         <div class="controls">
-          <%= f.text_field :telefono_contacto, :style => "width:100%;" %>
+          <%= f.text_field :telefono_contacto, :style => "width:100%;", :placeholder => "Ingrese su teléfono o celular de contacto" %>
         </div>
       </div>
     </div>
@@ -141,7 +142,7 @@
       <div class="control-group success">
         <label class="control-label"><strong>Correo electrónico:</strong></label>
         <div class="controls">
-          <%= f.text_field :email, :style => "width:100%;" %>
+          <%= f.text_field :email, :style => "width:100%;", :placeholder => "Ingrese su correo electrónico" %>
         </div>
       </div>
     </div>
@@ -149,82 +150,82 @@
 
   <hr/>
 
+  <legend>Escuelas en las que trabaja</legend>
+
   <div class="row">
-    <div class="span6">
-      <div class="control-group success">
-        <label class="control-label"><strong>Escuelas en las que trabaja:</strong></label>
-        <div class="controls">
-          <%= f.text_field :establecimiento_tokens, "data-pre" => @persona.establecimientos.map(&:attributes).to_json, :class => "success" %>
-        </div>
-      </div>
+    <div class="span12" style="margin:10px 0px 10px 210px;">
+    <%= f.text_field :establecimiento_tokens, "data-pre" => @persona.establecimientos.map(&:attributes).to_json, :placeholder => "buenas" %>
     </div>
   </div>
 
-  <hr/>
+  </br>
+
+  <legend>Encuesta - Datos ADR</legend>
 
   <div class="row">
+    <div class="span6" style="color:#468847">
+      <strong>Está interesado en ingresar a planta como auxiliar de la educación?</strong>
+    </div>
     <div class="span6">
-      <div class="control-group success">
-        <label class="control-label"><strong>Está interesado en ingresar a planta como auxiliar de la educación?</strong></label>
-        <div class="controls">
-          <%= f.check_box :ingresar_planta %>
-        </div>
-      </div>
+      <%= f.check_box :ingresar_planta %>
     </div>
   </div>
+  <br/><br/>
 
-  <div class="row">
-    <div class="span6">
-      <div class="control-group success">
-        <label class="control-label"><strong>Cantidad de contratos que posee:</strong></label>
-        <div class="controls">
-          <%= f.select :cant_contratos, (0..5) %>
+  <div id="tipo-contratacion">
+    <div class="row">
+      <div class="span6">
+        <div class="control-group success">
+          <label class="control-label"><strong>Cantidad de contratos que posee:</strong></label>
+          <div class="controls">
+            <%= f.select :cant_contratos, (0..5) %>
+          </div>
+        </div>
+      </div>
+      <div class="span6">
+        <div class="control-group success">
+          <label class="control-label"><strong>Cantidad de horas cátedra que posee:</strong></label>
+          <div class="controls">
+            <%= f.select :cant_horas, (0..45) %>
+          </div>
         </div>
       </div>
     </div>
-    <div class="span6">
-      <div class="control-group success">
-        <label class="control-label"><strong>Cantidad de horas cátedra que posee:</strong></label>
-        <div class="controls">
-          <%= f.select :cant_horas, (0..45) %>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="span6">
-      <div class="control-group success">
-        <label class="control-label"><strong>Cantidad de cargos docentes que posee:</strong></label>
-        <div class="controls">
-          <%= f.select :cant_cargos_docente, (0..5) %>
+    <div class="row">
+      <div class="span6">
+        <div class="control-group success">
+          <label class="control-label"><strong>Cantidad de cargos docentes que posee:</strong></label>
+          <div class="controls">
+            <%= f.select :cant_cargos_docente, (0..5) %>
+          </div>
+        </div>
+      </div>
+      <div class="span6">
+        <div class="control-group success">
+          <label class="control-label"><strong>Cantidad de cargos auxiliares que posee:</strong></label>
+          <div class="controls">
+            <%= f.select :cant_cargos_aux, (0..5) %>
+          </div>
         </div>
       </div>
     </div>
-    <div class="span6">
-      <div class="control-group success">
-        <label class="control-label"><strong>Cantidad de cargos auxiliares que posee:</strong></label>
-        <div class="controls">
-          <%= f.select :cant_cargos_aux, (0..5) %>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="span6">
-      <div class="control-group success">
-        <label class="control-label"><strong>Posee otro tipo de contratación?</strong></label>
-        <div class="controls">
-          <%= f.check_box :otra_contratacion %>
+    <div class="row">
+      <div class="span6">
+        <div class="control-group success">
+          <label class="control-label"><strong>Posee otro tipo de contratación?</strong></label>
+          <div class="controls">
+            <%= f.check_box :otra_contratacion %>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="span6">
-      <div class="control-group success">
-        <label class="control-label"><strong>Cual?</strong></label>
-        <div class="controls">
-          <%= f.text_field :cual_contratacion, :style => "width:100%;" %>
+      <div class="span6">
+        <div class="control-group success">
+          <label class="control-label"><strong>Cual?</strong></label>
+          <div class="controls">
+            <%= f.text_field :cual_contratacion, :style => "width:100%;" %>
+          </div>
         </div>
       </div>
     </div>
@@ -233,7 +234,7 @@
 
 
   <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= f.submit nil, :class => 'btn btn-primary', :value => "Guardar" %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 personas_path, :class => 'btn' %>
   </div>
