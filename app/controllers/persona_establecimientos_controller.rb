@@ -1,4 +1,6 @@
 class PersonaEstablecimientosController < ApplicationController
+  before_filter :authenticate_user!
+  load_and_authorize_resource 
   # GET /persona_establecimientos
   # GET /persona_establecimientos.json
   def index

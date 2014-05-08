@@ -1,4 +1,6 @@
 class EstadoCivilsController < ApplicationController
+  before_filter :authenticate_user!
+  load_and_authorize_resource 
   # GET /estado_civils
   # GET /estado_civils.json
   def index
