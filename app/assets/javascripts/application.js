@@ -16,7 +16,7 @@
 
 $(document).ready(
   function() {
-  $("#persona_establecimiento_tokens").tokenInput("/soft/censo-adr/establecimientos.json", {
+  $("#persona_establecimiento_tokens").tokenInput("/soft/adr/establecimientos.json", {
 		crossDomain: false,
 		searchingText: "Buscando...",
 		hintText: "Escriba para buscar establecimientos",

@@ -1,6 +1,7 @@
 Mysecurity::Application.routes.draw do
 
 scope '/soft/adr' do
+
   resources :persona_establecimientos
 
   resources :situacion_revista
@@ -89,5 +90,5 @@ scope '/soft/adr' do
   #
 
   root :to => "personas#new"
-end
+  end
 end
