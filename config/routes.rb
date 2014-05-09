@@ -1,7 +1,6 @@
 Mysecurity::Application.routes.draw do
 
-  scope '/soft/censo-adr' do
-
+scope '/soft/adr' do
   resources :persona_establecimientos
 
   resources :situacion_revista
