@@ -162,7 +162,7 @@
 
   <div class="row">
     <div class="span6" style="color:#468847">
-      <strong>Está interesado en ingresar a planta como auxiliar de la educación?</strong>
+      <strong>Marque si está interesado en ingresar a planta como auxiliar de la educación</strong>
     </div>
     <div class="span6">
       <%= f.check_box :ingresar_planta %>
@@ -181,10 +181,10 @@
         </div>
       </div>
       <div class="span6">
-        <div class="control-group success">
-          <label class="control-label"><strong>Antigüedad:</strong></label>
+        <div class="control-group success" title="Si tiene más de un cargo indique el de mayor antigüedad">
+          <label class="control-label"><strong>Antigüedad (meses):</strong></label>
           <div class="controls">
-            <%= f.select :antiguedad_contratos, (0..6) %>
+            <%= f.select :antiguedad_contratos, (0..80) %>
           </div>
         </div>
       </div>
@@ -201,7 +201,7 @@
       </div>
       <div class="span6">
         <div class="control-group success">
-          <label class="control-label"><strong>Antigüedad:</strong></label>
+          <label class="control-label"><strong>Antigüedad (años):</strong></label>
           <div class="controls">
             <%= f.select :antiguedad_horas, (0..40) %>
           </div>
@@ -220,7 +220,7 @@
       </div>
       <div class="span6">
         <div class="control-group success">
-          <label class="control-label"><strong>Antigüedad:</strong></label>
+          <label class="control-label"><strong>Antigüedad (años):</strong></label>
           <div class="controls">
             <%= f.select :antiguedad_cargos_docente, (0..40) %>
           </div>
@@ -239,7 +239,7 @@
       </div>
       <div class="span6">
         <div class="control-group success">
-          <label class="control-label"><strong>Antigüedad:</strong></label>
+          <label class="control-label"><strong>Antigüedad (años):</strong></label>
           <div class="controls">
             <%= f.select :antiguedad_cargos_aux, (0..40) %>
           </div>
@@ -251,7 +251,7 @@
     <div class="row">
       <div class="span6">
         <div class="control-group success">
-          <label class="control-label"><strong>Posee otro tipo de contratación?</strong></label>
+          <label class="control-label"><strong>Marque si posee otro tipo de contratación</strong></label>
           <div class="controls">
             <%= f.check_box :otra_contratacion %>
           </div>
@@ -289,5 +289,11 @@
       showAnim: "explode"
         });
 
+</script>
+
+<script type="text/javascript">
+ $( document ).ready(function() {
+   $(document).tooltip();
+ });
 </script>
 
