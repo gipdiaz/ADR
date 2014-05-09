@@ -32,6 +32,12 @@
   <dd><%= @persona.email %></dd>
   <dt><strong><%= model_class.human_attribute_name(:localidad_id) %>:</strong></dt>
   <dd><%= @persona.localidad %></dd>
+  <dt><strong>Establecimientos:</strong></dt>
+  <dd>
+    <% @persona.establecimientos.each do |pe| %>
+      <%= pe.codigo_jurisdiccional %> - 
+    <% end %>
+  </dd>
   <dt><strong>Ingresar a planta:</strong></dt>
     <dd>
       <% if @persona.ingresar_planta == true then %>
@@ -41,13 +47,13 @@
       <% end %> 
     </dd>
   <dt><strong>Cant. contratos:</strong></dt>
-  <dd><%= @persona.cant_contratos %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:cant_horas) %>:</strong></dt>
-  <dd><%= @persona.cant_horas %></dd>
+  <dd><%= @persona.cant_contratos %> - <strong>Antigüedad:</strong> <%= @persona.antiguedad_contratos %></dd>
+  <dt><strong>Cant. horas:</strong></dt>
+  <dd><%= @persona.cant_horas %> - <strong>Antigüedad:</strong> <%= @persona.antiguedad_horas %></dd>
   <dt><strong>Cant. cargos docentes:</strong></dt>
-  <dd><%= @persona.cant_cargos_docente %></dd>
+  <dd><%= @persona.cant_cargos_docente %> - <strong>Antigüedad:</strong> <%= @persona.antiguedad_cargos_docente %></dd>
   <dt><strong>Cant. cargos auxiliares:</strong></dt>
-  <dd><%= @persona.cant_cargos_aux %></dd>
+  <dd><%= @persona.cant_cargos_aux %> - <strong>Antigüedad:</strong> <%= @persona.antiguedad_cargos_aux %></dd>
   <dt><strong>Otra contratación:</strong></dt>
   <dd>
       <% if @persona.otra_contratacion == true then %>

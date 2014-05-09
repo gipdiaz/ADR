@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140507170521) do
+ActiveRecord::Schema.define(:version => 20140509114919) do
 
   create_table "establecimientos", :force => true do |t|
     t.string   "codigo_jurisdiccional"
@@ -67,8 +67,8 @@ ActiveRecord::Schema.define(:version => 20140507170521) do
     t.integer  "sexo_id"
     t.date     "fecha_nacimiento"
     t.integer  "localidad_id"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.integer  "situacion_revista_id"
     t.string   "telefono_contacto"
     t.string   "email"
@@ -79,6 +79,10 @@ ActiveRecord::Schema.define(:version => 20140507170521) do
     t.integer  "cant_cargos_aux"
     t.boolean  "otra_contratacion"
     t.string   "cual_contratacion"
+    t.integer  "antiguedad_contratos"
+    t.integer  "antiguedad_horas"
+    t.integer  "antiguedad_cargos_docente"
+    t.integer  "antiguedad_cargos_aux"
   end
 
   create_table "regions", :force => true do |t|

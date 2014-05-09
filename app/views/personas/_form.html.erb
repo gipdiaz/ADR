@@ -182,12 +182,31 @@
       </div>
       <div class="span6">
         <div class="control-group success">
-          <label class="control-label"><strong>Cantidad de horas cátedra que posee:</strong></label>
+          <label class="control-label"><strong>Antigüedad:</strong></label>
           <div class="controls">
-            <%= f.select :cant_horas, (0..45) %>
+            <%= f.select :antiguedad_contratos, (0..6) %>
           </div>
         </div>
       </div>
+    </div>
+ 
+    <div class="row">
+      <div class="span6">
+        <div class="control-group success">
+          <label class="control-label"><strong>Cantidad de horas cátedra que posee:</strong></label>
+          <div class="controls">
+            <%= f.select :cant_horas, (0..50) %>
+          </div>
+        </div>
+      </div>
+      <div class="span6">
+        <div class="control-group success">
+          <label class="control-label"><strong>Antigüedad:</strong></label>
+          <div class="controls">
+            <%= f.select :antiguedad_horas, (0..40) %>
+          </div>
+        </div>
+     </div>
     </div>
 
     <div class="row">
@@ -201,13 +220,33 @@
       </div>
       <div class="span6">
         <div class="control-group success">
+          <label class="control-label"><strong>Antigüedad:</strong></label>
+          <div class="controls">
+            <%= f.select :antiguedad_cargos_docente, (0..40) %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="span6">
+        <div class="control-group success">
           <label class="control-label"><strong>Cantidad de cargos auxiliares que posee:</strong></label>
           <div class="controls">
             <%= f.select :cant_cargos_aux, (0..5) %>
           </div>
         </div>
       </div>
+      <div class="span6">
+        <div class="control-group success">
+          <label class="control-label"><strong>Antigüedad:</strong></label>
+          <div class="controls">
+            <%= f.select :antiguedad_cargos_aux, (0..40) %>
+          </div>
+        </div>
+      </div>
     </div>
+    
 
     <div class="row">
       <div class="span6">
@@ -251,3 +290,4 @@
         });
 
 </script>
+
