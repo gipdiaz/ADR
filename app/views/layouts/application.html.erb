@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Sistema de Censo ADR</title>
+  <title>Sistema de Censo ADR/RTE</title>
   
   <%= stylesheet_link_tag 'application', :media => "all" %>
   <%= stylesheet_link_tag    params[:controller] %>
@@ -16,7 +16,7 @@
 <div id="navbar-example" class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="<%= url_for root_path %>">&nbsp;&nbsp;&nbsp;Censo ADR</a>
+      <a class="brand" href="<%= url_for root_path %>">&nbsp;&nbsp;&nbsp;Censo ADR/RTE</a>
       <ul class="nav" role="navigation">
        	
        	<% if user_signed_in? then %>
