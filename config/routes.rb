@@ -1,5 +1,9 @@
 Mysecurity::Application.routes.draw do
-scope '/soft/censo-adr' do
+
+  scope "/soft/adr" do
+
+  get "index", to: 'personas#new'
+
   resources :persona_establecimientos
 
   resources :situacion_revista
@@ -88,5 +92,5 @@ scope '/soft/censo-adr' do
   #
 
   root :to => "personas#new"
-end
+  end
 end
