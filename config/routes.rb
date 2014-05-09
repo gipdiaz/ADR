@@ -1,6 +1,6 @@
 Mysecurity::Application.routes.draw do
 
-scope '/soft/adr' do
+scope '/soft/censo-adr' do
 
   resources :persona_establecimientos
 
