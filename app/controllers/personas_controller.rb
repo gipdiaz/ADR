@@ -15,12 +15,19 @@ class PersonasController < ApplicationController
   # GET /personas/1
   # GET /personas/1.json
   def show
-    @persona = Persona.find(params[:id])
+    if session["id_actual"].to_s == params[:id] || user_signed_in? then
+      @persona = Persona.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @persona }
-    end
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @persona }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to root_url, notice: "Usted no puede ver esta persona" }
+        format.json { head :no_content }
+      end
+    end 
   end
 
   # GET /personas/new
@@ -46,6 +53,7 @@ class PersonasController < ApplicationController
 
     respond_to do |format|
       if @persona.save
+        session["id_actual"] = @persona.id
         format.html { redirect_to @persona, notice: 'Persona was successfully created.' }
         format.json { render json: @persona, status: :created, location: @persona }
       else
