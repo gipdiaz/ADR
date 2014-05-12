@@ -15,7 +15,7 @@ class PersonasController < ApplicationController
   # GET /personas/1
   # GET /personas/1.json
   def show
-    if session["id_actual"].to_s == params[:id] then
+    if session["id_actual"].to_s == params[:id] || user_signed_in? then
       @persona = Persona.find(params[:id])
 
       respond_to do |format|
@@ -27,7 +27,7 @@ class PersonasController < ApplicationController
         format.html { redirect_to root_url, notice: "Usted no puede ver esta persona" }
         format.json { head :no_content }
       end
-    end
+    end 
   end
 
   # GET /personas/new
