@@ -21,6 +21,8 @@ class Persona < ActiveRecord::Base
   attr_accessible :persona_attributes
 
   attr_accessible :establecimiento_tokens
+  validates :establecimiento_tokens, :presence => true
+  #validates_presence_of :establecimiento_tokens, :message => "Put some address please" 
   has_many :persona_establecimiento, :dependent => :destroy
   has_many :establecimientos, :through => :persona_establecimiento
   attr_reader :establecimiento_tokens
