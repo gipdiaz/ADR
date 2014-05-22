@@ -9,7 +9,7 @@
 //= require twitter/bootstrap
 //= require allPages
 //= require dataTables/jquery.dataTables
-//= require dataTables/jquery.dataTables.bootstrap
+//= require dataTables/jquery.dataTables.bootstrap3
 //= require jquery-ui
 //= require jquery-ui-timepicker-addon.js
 //= require jquery.tokeninput
